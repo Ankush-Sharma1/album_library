@@ -1,0 +1,32 @@
+<h1 align="center">Current User Album</h1>
+
+<table align="center" class="table table-bordered table-dark table-hover table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Preview</th>
+    <!-- <th>Show Images</th> -->
+    <th>Delete Album</th>
+  </tr>
+  <% if @albums.present? %>
+    <% @albums.each do|album| %>
+      <tr>
+        <td><%= album.title %></td>
+        <td><%= album.description %></td>
+        <td><%= image_tag(album.photos.order(created_at: :desc).try(:first).try(:path) || "no_preview_available.png", class: "", style: "max-width: 300px; height: auto;") %></td>
+        <!-- <td><%#= link_to 'Show'.html_safe, admin_dashboard_path(album), :class => "btn btn-primary" %></td> -->
+        <td align="center"><%= link_to 'Delete'.html_safe, admin_dashboard_destroy_album_path(album), :class => "btn btn-danger",
+                method: :delete,
+                data: {confirm: 'Are you sure ?'} %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<% if !@albums.present? %>
+    <h1 align="center">No Albums</h1>
+<% end %>
+
+<%= link_to('Back', admin_dashboard_index_path, :class => "button btn btn-outline-success") %>
+
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "button btn btn-danger" )%>
+

@@ -1,0 +1,32 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+table{
+  border: solid black;
+  border-collapse: collapse;
+  padding: 0px;
+}
+
+th{
+  padding: 10px;
+  border: solid black;
+}
+/*th:nth-child(even){
+  padding: 10px;
+  border:solid;
+  background-color: red;
+}*/
+
+
+
+/*tr:nth-child(even)
+{
+  background-color:pink;
+}
+*/
+tr:nth-child(odd)
+{
+  background-color:dark;
+}

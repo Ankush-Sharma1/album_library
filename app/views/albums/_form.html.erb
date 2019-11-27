@@ -1,0 +1,42 @@
+<div class="container" style="background-image: url('/assets/g1.jpg'); height: 100%; background-position:  center; background-repeat: no-repeat; background-size: cover; position: relative;">
+
+  <div class="container">
+    <!-- <div class="row" > -->
+      <!-- <div id="col-md-12"> -->
+        <%#= simple_form_for(@album, url: (action_name == "new" ? albums_path : album_path(@album)), local: true, method: (action_name == "new" ? "post" : "put")) do|f| %>
+        <!-- <div class="tab-content"> -->
+          <div class="row">
+            <div class="col-md-12" align="center">
+                <%= simple_form_for(@album, local: true,) do|f| %>
+                  <h3 class="heading" align="center">Create Album</h3>
+                  <% if @album.errors.any? %>
+                    <div id="error_explanation">
+                      <h2> Please Check Your Field</h2>
+                      <ul>
+                        <% @album.errors.full_messages.each do|message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="form-group">
+                    <%= f.label :title %>
+                    <%= f.text_field :title %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :description %>
+                    <%= f.text_field :description %>
+                  </div>
+                  <%= f.submit %>
+
+                  <%= link_to('Back', albums_path, :class => "button btn btn-danger" )%>
+
+
+                <% end %>
+            </div>
+          </div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>

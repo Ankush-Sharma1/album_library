@@ -1,0 +1,19 @@
+<div class="form-group">
+  <strong>Title:</strong>
+  <%= @album.title %>
+</div>
+
+
+<div class="form-group">
+  <strong>Description:</strong>
+  <%= @album.description %>
+</div>
+
+<p>
+  <%#= render(partial: '/photos/form', locals: {album: @album}) %>
+  <%= render '/photos/form', album: @album %>
+</p>
+
+<p>
+  <%= render '/photos/list', album: @album, photos: @photos %>
+</p>

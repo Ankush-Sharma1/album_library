@@ -1,0 +1,36 @@
+<div class="container table-container">
+<h1 align="center">Your Albums</h1>
+<table align="center" class="table table-bordered table-dark table-hover table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Preview</th>
+    <th>Show Images</th>
+    <th>Edit Album</th>
+    <th>Delete Album</th>
+  </tr>
+  <% @albums.each do|album| %>
+    <tr>
+      <td><%= album.title %></td>
+      <td><%= album.description %></td>
+      <td><%= image_tag(album.photos.order(created_at: :desc).try(:first).try(:path) || "no_preview_available.png", class: "", style: "max-width: 300px; height: auto;") %></td>
+      <td><%= link_to 'Show'.html_safe, album_path(album), :class => "btn btn-primary" %></td>
+      <td><%= link_to 'Edit'.html_safe, edit_album_path(album), :class => "btn btn-success"%></td>
+      <td><%= link_to 'Delete'.html_safe, album_path(album), :class => "btn btn-danger",
+              method: :delete,
+              data: {confirm: 'Are you sure ?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+
+
+<%= link_to "<button>New Album </button>".html_safe, new_album_path, class: "button btn btn-success" %>
+
+<p align="right">
+<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "button btn btn-danger" )%>
+</p>
+</div>

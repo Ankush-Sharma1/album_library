@@ -1,0 +1,16 @@
+<div id="container">
+
+<%#= simple_form_for(@album, url: (action_name == "new" ? albums_path : album_path(@album)), local: true, method: (action_name == "new" ? "post" : "put")) do|f| %>
+<%= simple_form_for(Photo.new, url: album_photos_path(album),local: true, html: {multipart: true}) do|f| %>
+   <h2 align="center" >Upload your photos</h2>
+
+  <div class="form-group">
+    <%= label_tag :file, "File" %>
+    <%= file_field_tag "files[]" , accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+  </div>
+ <div class="form-group"> <%= f.submit 'Upload Photos', :class => 'btn btn-success' %></div>
+
+
+
+<% end %>
+</div>
